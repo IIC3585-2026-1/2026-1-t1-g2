@@ -54,3 +54,12 @@ Lista de funcionalidades/características
 Elementos:
 
 - Flex-box
+
+## Paleta
+
+#16675f
+#40d6c7
+#6ee0d4
+#6ee092
+#40d670
+#166730
