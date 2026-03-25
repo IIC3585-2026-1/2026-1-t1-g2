@@ -57,6 +57,8 @@ Elementos:
 
 ## Paleta
 
+https://www.fffuel.co/pppalette/
+
 #16675f
 #40d6c7
 #6ee0d4
