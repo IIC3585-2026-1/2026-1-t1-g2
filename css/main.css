@@ -1,0 +1,67 @@
+/* Orquestador */
+@import url('_variables.css');
+@import url('_base.css');
+
+/*
+@import url('components/_navbar.css');
+@import url('components/_hero.css');
+@import url('components/_gallery.css');
+@import url('components/_features.css');
+@import url('components/_footer.css');
+*/
+
+/* Grid Section */
+.grids {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
+  gap: var(--gap); 
+  padding-left: var(--box-padding);
+  padding-right: var(--box-padding);
+  perspective: 1000px; /* define la distancia entre el elemento y el observador */
+}
+
+.box-flip {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  transition: transform 0.6s ease; /* tiempo de la transformación (rotación) */
+  cursor: pointer; /* indica que se puede clickar el elemento */
+  transform-style: preserve-3d; /* permite que los hijos mantengan su espacio 3D (y por ende, 
+                                   poder tener 2 "caras" del elemento) */
+}
+
+.box-face {
+  position: absolute; /* permite que los elementos se superpongan (una cara encima de otra) */
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent-light-blue);
+  color: var(--text-main);
+  padding: var(--gap);
+  border-radius: var(--radius);
+  font-size: var(--h2-size);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.35); 
+  backface-visibility: hidden; /* oculta la cara trasera del elemento */
+  border-left: 3px solid var(--accent-lighter-blue);
+  border-top: 3px solid var(--accent-lighter-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* cara trasera, visible al hacer clic */
+.box-back {
+  transform: rotateY(180deg); /* rota la cara trasera 180 grados para que quede "detrás" de la frontal */
+}
+
+/* (si no agregamos nada aca, eliminar) cara frontal, visible por defecto */
+.box-front {   
+}
+
+/* Imágenes dentro de los boxes */
+.box-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* mantiene la proporción sin distorsionar */
+  width: auto;
+  height: auto;
+}

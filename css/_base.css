@@ -1,0 +1,31 @@
+/* Reset básico profesional */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Fundamental para que Flex y Grid no se rompan */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.5;
+  overflow-x: hidden; /* Evita scrolls laterales accidentales */
+}
+
+img {
+  max-width: 100%; /* Imágenes responsivas por defecto */
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+ul {
+  list-style: none;
+}

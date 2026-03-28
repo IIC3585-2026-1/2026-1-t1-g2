@@ -3,16 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My First Project</title>
+    <title>CSS Project</title>
     <!-- Link the CSS file here -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
-    <h1>Hello, World!</h1>
-    <p>This is my first basic HTML and CSS project.</p>
-    <ul>
-      <li>HTML gives the page structure.</li>
-      <li>CSS makes it look great.</li>
-    </ul>
+    <section class="grids">
+      <!-- Mostrar transformación 3D -->
+      <div class="box-flip">
+        <div class="box-face box-front">
+          Contenido frontal
+        </div> 
+        <div class="box-face box-back">
+          Contenido trasero
+        </div>
+      </div>
+      <!-- Ver HTML -->
+      <div class="box-flip">
+        <div class="box-face box-front">
+          Veamos el código HTML
+        </div>
+        <div class="box-face box-back">
+          <p>Este es el código HTML de nuestro elemento:</p>
+          <img src="assets/box-flip-html.png" alt="HTML del box-flip" class="box-img">
+        </div>
+      </div>
+      <!-- Ver CSS -->
+      <div class="box-flip">
+        <div class="box-face box-front">
+          Contenido frontal
+        </div> 
+        <div class="box-face box-back">
+          <p>Parte del CSS de nuestro elemento:</p>
+          <img src="assets/box-flip-css.png" alt="Primera parte del CSS del box-flip" class="box-img">
+        </div>
+      </div>
+      <!-- Ver CSS -->
+      <div class="box-flip">
+        <div class="box-face box-front">
+          Contenido frontal
+        </div> 
+        <div class="box-face box-back">
+          <p>Otra parte del CSS de nuestro elemento:</p>
+          <img src="assets/box-flip-css-2.png" alt="Segunda parte del CSS del box-flip" class="box-img">
+        </div>
+      </div>
+      <!-- Ver Script -->
+      <div class="box-flip">
+        <div class="box-face box-front">
+          Contenido frontal
+        </div> 
+        <div class="box-face box-back">
+          <p>Script de nuestro elemento:</p>
+          <img src="assets/box-flip-script.png" alt="Script del box-flip" class="box-img">
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const boxFlips = document.querySelectorAll('.box-flip');
+      
+      boxFlips.forEach(boxFlip => {
+        let isRotated = false;
+        
+        // rota el elemento al hacer click
+        boxFlip.addEventListener('click', function() {
+          isRotated = !isRotated;
+          // define rotation como 180 grados para mostrar la parte trasera, 
+          // 0 para mostrar la parte frontal
+          const rotation = isRotated ? 180 : 0; 
+          // modificamos la propiedad transform para rotar el elemento en el eje Y
+          this.style.transform = `rotateY(${rotation}deg)`; 
+        });
+      });
+    </script>
   </body>
 </html>
