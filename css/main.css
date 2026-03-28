@@ -20,6 +20,10 @@
   perspective: 1000px; /* define la distancia entre el elemento y el observador */
 }
 
+section {
+  padding-block: var(--gap);
+}
+
 .box-flip {
   position: relative;
   width: 100%;
@@ -64,4 +68,130 @@
   object-fit: contain; /* mantiene la proporción sin distorsionar */
   width: auto;
   height: auto;
+}
+
+
+/* ---------- Galería --------------- */
+
+
+.store {
+  padding: var(--box-padding);
+}
+
+.store-title {
+  font-size: var(--h1-size);
+  margin-bottom: var(--gap);
+  text-align: center;
+}
+
+/* Nuevo grid para la tienda */
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--gap);
+}
+
+/* Mejora visual de los boxes en la tienda */
+.store .box-face {
+  font-size: var(--p-size);
+  transition: transform var(--transition-smooth), background-color var(--transition-fast);
+}
+
+/* Hover adicional (para mostrar TRANSICIONES) */
+.store .box-flip:hover {
+  transform: scale(1.05);
+}
+
+/* ---------- CAROUSEL --------------- */
+
+.carousel-title {
+  font-size: var(--h1-size);
+  margin-bottom: var(--gap);
+  text-align: center; 
+  color: var(--accent-light-green); 
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  padding: var(--gap);
+}
+
+/* Track horizontal */
+.carousel-track {
+  display: flex;
+  gap: var(--gap);
+  transition: transform 0.5s ease;
+}
+
+/* Cada item ocupa ancho fijo */
+.carousel-item {
+  min-width: 300px;
+  flex: 0 0 auto;
+}
+
+.carousel-item:hover {
+  transform: scale(1.08);
+  z-index: 5;
+}
+
+
+.carousel-item .box-face {
+  padding: 0;
+  border: none;
+  overflow: hidden;
+}
+
+.carousel-item .box-back {
+  flex-direction: column;
+}
+
+.carousel-item .box-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item .box-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Botones */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent-light-blue);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.carousel-btn:hover {
+  background: var(--accent-light-green);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.top-sellers .box-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.top-sellers .box-face {
+  padding: 0;
+  overflow: hidden;
 }
