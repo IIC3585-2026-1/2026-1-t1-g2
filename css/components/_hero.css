@@ -41,21 +41,43 @@
 .hero-visual {
   display: flex;
   justify-content: center;
+  perspective: 800px; /* profundidad 3D para el giro */
+
+  .cube-showcase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* separa ambos círculos */
+    padding: 1rem;
+  }
 
   .shape {
+    transform-style: preserve-3d; /* mantiene efecto 3D interno */
+    transform-origin: center center;
+    position: relative; /* permite animar propiedades de posicionamiento */
     width: 200px;
     height: 200px;
     background-color: var(--accent-light-blue);
-    border-radius: var(--radius);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 50%; /* círculo perfecto */
+    box-shadow: var(--shadow-default);
+    --hero-spin-speed: 8s;
 
-    /* TRANSICIÓN Y ANIMACIÓN */
-    transition: var(--transition-smooth);
-    animation: float 6s ease-in-out infinite;
+    /* transición para cambios suaves en hover y salida hover */
+    transition:
+      transform var(--transition-fast),
+      background-color var(--transition-fast),
+      top var(--transition-fast),
+      box-shadow var(--transition-fast);
+
+    /* Quitamos animaciones CSS para que el JS controle el giro continuamente */
+    animation: none;
 
     &:hover {
-      transform: rotate(15deg) scale(1.1); /* TRANSFORMACIÓN */
-      background-color: var(--accent-light-green);
+      /* A partir de JS se controla la rotación, aquí solo el efecto visual extra */
+      background-color: var(--accent-light-green) !important;
+      box-shadow:
+        0 0 30px 6px rgba(80, 250, 123, 0.4),
+        var(--shadow-default);
     }
   }
 }
@@ -64,46 +86,6 @@
   display: flex;
   gap: var(--gap);
   margin-top: calc(var(--gap) * 2);
-
-  .btn-glass {
-    /* Estructura Base */
-    padding: 0.8rem 2rem;
-    border-radius: calc(var(--radius) / 2);
-    font-weight: 600;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-
-    /* Efecto Cristal */
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px); /* FUNCIÓN de desenfoque */
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    color: var(--text-main);
-    box-shadow: var(--glass-shadow);
-
-    /* TRANSICIÓN */
-    transition: var(--transition-smooth);
-
-    /* HOVER con TRANSFORMACIÓN */
-    &:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-5px); /* Se eleva */
-      border-color: var(--accent-light-blue);
-      box-shadow: 0 12px 40px 0 rgba(64, 214, 199, 0.3);
-    }
-
-    /* Versión "Primaria" con color */
-    &.primary {
-      background: rgba(64, 214, 199, 0.2);
-      border: 1px solid var(--accent-light-blue);
-
-      &:hover {
-        background: var(--accent-light-blue);
-        color: var(--bg-primary);
-      }
-    }
-  }
 }
 
 /* --- Media Queries (Viewport) --- */
@@ -129,12 +111,11 @@
 }
 
 /* --- Keyframes --- */
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
+@keyframes spin-3d {
+  from {
+    transform: rotateY(0deg) scale(1);
   }
-  50% {
-    transform: translateY(-20px);
+  to {
+    transform: rotateY(360deg) scale(1);
   }
 }
