@@ -1,13 +1,13 @@
 :root {
-  /* 1. Colores (Agnósticos) */
-  --bg-primary: #16675f;
-  --bg-secondary: #166730;
-  --accent-light-blue: #40d6c7;
-  --accent-lighter-blue: #6ee0d4;
-  --accent-light-green: #40d670;
-  --accent-lighter-green: #6ee092;
-  --text-main: #1d1d1f;
-  --text-muted: #86868b;
+  /* 1. Colores (Agnósticos) - Dark theme estilo terminal/Steam */
+  --bg-primary: #0f1218; /* fondo negro profundo pero con matiz azul frío */
+  --bg-secondary: #1a202b; /* segundo nivel de fondo para secciones */
+  --accent-light-blue: #66d9ef; /* cyan brillante para enlaces, botones y acentos */
+  --accent-lighter-blue: #8be9fd;
+  --accent-light-green: #50fa7b; /* verde neón estilo terminal */
+  --accent-lighter-green: #8affb0;
+  --text-main: #f8f8f2; /* texto claro y legible */
+  --text-muted: #6272a4; /* gris azulado para texto secundario */
 
   /* 2. Tipografía y Escala (Uso de calc) */
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
@@ -29,12 +29,24 @@
   --glass-bg: rgba(255, 255, 255, 0.1);
   --glass-border: rgba(255, 255, 255, 0.2);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+  /* Sombras estilo terminal/consola */
+  --shadow-default: 0 20px 40px rgba(0, 0, 0, 0.35);
+  --shadow-soft: 0 12px 40px 0 rgba(64, 214, 199, 0.3);
+
+  /* Hover backgrounds en componentes glass */
+  --glass-hover-bg: rgba(255, 255, 255, 0.2);
+  --glass-primary-hover-bg: rgba(64, 214, 199, 0.2);
 }
 
 /* Ejemplo de Dark Mode rápido (Persona C) */
 [data-theme='dark'] {
-  --bg-primary: #000000;
-  --bg-secondary: #1d1d1f;
-  --text-main: #f5f5f7;
-  --text-muted: #a1a1a6;
+  --bg-primary: #0f1218;
+  --bg-secondary: #1b2431;
+  --text-main: #f8f8f2;
+  --text-muted: #6272a4;
+  --accent-light-blue: #66d9ef;
+  --accent-lighter-blue: #8be9fd;
+  --accent-light-green: #50fa7b;
+  --accent-lighter-green: #8affb0;
 }

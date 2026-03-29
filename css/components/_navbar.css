@@ -42,3 +42,15 @@
     }
   }
 }
+
+.navbar {
+  .btn-glass {
+    padding: 0.5rem 1.2rem; /* Más pequeño para el menú */
+    font-size: 0.8rem;
+
+    /* Si en el Navbar NO quieres que se eleve tanto al hacer hover */
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}

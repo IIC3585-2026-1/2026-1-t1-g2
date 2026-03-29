@@ -43,7 +43,7 @@
   padding: var(--gap);
   border-radius: var(--radius);
   font-size: var(--h2-size);
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-default);
   backface-visibility: hidden; /* oculta la cara trasera del elemento */
   border-left: 3px solid var(--accent-lighter-blue);
   border-top: 3px solid var(--accent-lighter-blue);
@@ -92,5 +92,50 @@
     fill: var(
       --bg-secondary
     ); /* Color hacia donde va (el fondo de los Grids) */
+  }
+}
+
+/* Bloque Independiente: Reutilizable en toda la web */
+.btn-glass {
+  /* Estructura Base */
+  padding: 0.8rem 2rem;
+  border-radius: calc(var(--radius) / 2);
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* Por si es un <a> */
+
+  /* Efecto Cristal */
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  box-shadow: var(--glass-shadow);
+
+  /* TRANSICIÓN */
+  transition: var(--transition-smooth);
+
+  /* HOVER con TRANSFORMACIÓN */
+  &:hover {
+    background: var(--glass-hover-bg);
+    transform: translateY(-5px);
+    border-color: var(--accent-light-blue);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Modificador: Versión Primaria */
+  &.primary {
+    background: var(--glass-primary-hover-bg);
+    border: 1px solid var(--accent-light-blue);
+
+    &:hover {
+      background: var(--accent-light-blue);
+      color: var(--bg-primary);
+    }
   }
 }

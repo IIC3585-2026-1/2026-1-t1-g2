@@ -43,19 +43,27 @@
   justify-content: center;
 
   .shape {
+    position: relative;
     width: 200px;
     height: 200px;
     background-color: var(--accent-light-blue);
     border-radius: var(--radius);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-
-    /* TRANSICIÓN Y ANIMACIÓN */
-    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-default);
+    transition:
+      transform var(--transition-fast),
+      background-color var(--transition-fast),
+      top var(--transition-fast);
     animation: float 6s ease-in-out infinite;
 
     &:hover {
       transform: rotate(15deg) scale(1.1); /* TRANSFORMACIÓN */
       background-color: var(--accent-light-green);
+      animation-play-state: paused; /* pausa la animación de float para un hover estable */
+      top: 0;
+    }
+
+    &:not(:hover) {
+      animation-play-state: running;
     }
   }
 }
@@ -64,46 +72,6 @@
   display: flex;
   gap: var(--gap);
   margin-top: calc(var(--gap) * 2);
-
-  .btn-glass {
-    /* Estructura Base */
-    padding: 0.8rem 2rem;
-    border-radius: calc(var(--radius) / 2);
-    font-weight: 600;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-
-    /* Efecto Cristal */
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px); /* FUNCIÓN de desenfoque */
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    color: var(--text-main);
-    box-shadow: var(--glass-shadow);
-
-    /* TRANSICIÓN */
-    transition: var(--transition-smooth);
-
-    /* HOVER con TRANSFORMACIÓN */
-    &:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-5px); /* Se eleva */
-      border-color: var(--accent-light-blue);
-      box-shadow: 0 12px 40px 0 rgba(64, 214, 199, 0.3);
-    }
-
-    /* Versión "Primaria" con color */
-    &.primary {
-      background: rgba(64, 214, 199, 0.2);
-      border: 1px solid var(--accent-light-blue);
-
-      &:hover {
-        background: var(--accent-light-blue);
-        color: var(--bg-primary);
-      }
-    }
-  }
 }
 
 /* --- Media Queries (Viewport) --- */
@@ -132,9 +100,9 @@
 @keyframes float {
   0%,
   100% {
-    transform: translateY(0);
+    top: 0;
   }
   50% {
-    transform: translateY(-20px);
+    top: -20px;
   }
 }
