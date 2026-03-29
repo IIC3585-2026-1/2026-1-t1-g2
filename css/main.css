@@ -1,10 +1,11 @@
 /* Orquestador */
 @import url('_variables.css');
 @import url('_base.css');
-
-/*
 @import url('components/_navbar.css');
 @import url('components/_hero.css');
+
+/*
+
 @import url('components/_gallery.css');
 @import url('components/_features.css');
 @import url('components/_footer.css');
@@ -14,10 +15,13 @@
 .grids {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
-  gap: var(--gap); 
+  gap: var(--gap);
+  padding-top: 4rem;
+  padding-bottom: 5rem;
   padding-left: var(--box-padding);
   padding-right: var(--box-padding);
   perspective: 1000px; /* define la distancia entre el elemento y el observador */
+  background-color: var(--bg-primary);
 }
 
 .box-flip {
@@ -39,7 +43,7 @@
   padding: var(--gap);
   border-radius: var(--radius);
   font-size: var(--h2-size);
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.35); 
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.35);
   backface-visibility: hidden; /* oculta la cara trasera del elemento */
   border-left: 3px solid var(--accent-lighter-blue);
   border-top: 3px solid var(--accent-lighter-blue);
@@ -50,11 +54,13 @@
 
 /* cara trasera, visible al hacer clic */
 .box-back {
-  transform: rotateY(180deg); /* rota la cara trasera 180 grados para que quede "detrás" de la frontal */
+  transform: rotateY(
+    180deg
+  ); /* rota la cara trasera 180 grados para que quede "detrás" de la frontal */
 }
 
 /* (si no agregamos nada aca, eliminar) cara frontal, visible por defecto */
-.box-front {   
+.box-front {
 }
 
 /* Imágenes dentro de los boxes */
@@ -64,4 +70,27 @@
   object-fit: contain; /* mantiene la proporción sin distorsionar */
   width: auto;
   height: auto;
+}
+
+.section-divider {
+  line-height: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-primary); /* Color de fondo del Hero */
+
+  svg {
+    position: relative;
+    display: block;
+    width: calc(
+      150% + 1.3px
+    ); /* Un poco más ancho para evitar bordes blancos */
+    height: 100px;
+    transform: rotateY(180deg); /* TRANSFORMACIÓN: Espejo horizontal */
+  }
+
+  .shape-fill {
+    fill: var(
+      --bg-secondary
+    ); /* Color hacia donde va (el fondo de los Grids) */
+  }
 }
