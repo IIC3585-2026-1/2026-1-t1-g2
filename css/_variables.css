@@ -20,11 +20,15 @@
   --gap: 1.5rem;
   --container-max-width: 1200px;
   --radius: 20px;
-  --box-padding:100px;
+  --box-padding: 100px;
 
   /* 4. Animación */
   --transition-fast: 0.2s ease;
   --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 /* Ejemplo de Dark Mode rápido (Persona C) */

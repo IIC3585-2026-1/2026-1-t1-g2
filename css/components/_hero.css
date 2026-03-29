@@ -1,0 +1,140 @@
+/* --- Hero Component --- */
+/* .hero-container: fondo y espaciado general del área hero, con container queries activadas */
+.hero-container {
+  container-type: inline-size; /* CONTAINER QUERIES */
+  container-name: hero-wrapper;
+  background: linear-gradient(180deg, var(--bg-primary), var(--bg-secondary));
+  padding: 4rem var(--box-padding);
+}
+
+/* .hero: layout principal en grid, se divide en 2 columnas para texto + visual */
+.hero {
+  display: grid; /* GRID */
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: calc(var(--gap) * 2); /* FUNCIÓN CALC */
+  align-items: center;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+/* .hero-content: seccion de texto con título y párrafo descriptivo */
+.hero-content {
+  h1 {
+    font-size: var(--h1-size);
+    line-height: 1;
+    margin-bottom: var(--gap);
+    span {
+      color: var(--accent-light-blue);
+    }
+  }
+
+  p {
+    font-size: calc(var(--p-size) * 2.5);
+    color: var(--text-main);
+    max-width: 500px;
+    margin-bottom: calc(var(--gap) * 1.5);
+  }
+}
+
+/* Animaciones y Transformaciones */
+/* .hero-visual: contenedor del bloque visual animado */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+
+  .shape {
+    width: 200px;
+    height: 200px;
+    background-color: var(--accent-light-blue);
+    border-radius: var(--radius);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+    /* TRANSICIÓN Y ANIMACIÓN */
+    transition: var(--transition-smooth);
+    animation: float 6s ease-in-out infinite;
+
+    &:hover {
+      transform: rotate(15deg) scale(1.1); /* TRANSFORMACIÓN */
+      background-color: var(--accent-light-green);
+    }
+  }
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--gap);
+  margin-top: calc(var(--gap) * 2);
+
+  .btn-glass {
+    /* Estructura Base */
+    padding: 0.8rem 2rem;
+    border-radius: calc(var(--radius) / 2);
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    /* Efecto Cristal */
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px); /* FUNCIÓN de desenfoque */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    box-shadow: var(--glass-shadow);
+
+    /* TRANSICIÓN */
+    transition: var(--transition-smooth);
+
+    /* HOVER con TRANSFORMACIÓN */
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px); /* Se eleva */
+      border-color: var(--accent-light-blue);
+      box-shadow: 0 12px 40px 0 rgba(64, 214, 199, 0.3);
+    }
+
+    /* Versión "Primaria" con color */
+    &.primary {
+      background: rgba(64, 214, 199, 0.2);
+      border: 1px solid var(--accent-light-blue);
+
+      &:hover {
+        background: var(--accent-light-blue);
+        color: var(--bg-primary);
+      }
+    }
+  }
+}
+
+/* --- Media Queries (Viewport) --- */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr; /* Cambia Grid a 1 columna */
+    text-align: center;
+    .hero-content p {
+      margin: 0 auto var(--gap);
+    }
+  }
+  .nav-links {
+    display: none;
+  } /* Ocultar links en móvil */
+}
+
+/* --- Container Queries (Basado en el contenedor padre) --- */
+@container hero-wrapper (max-width: 600px) {
+  .hero-content h1 {
+    font-size: calc(var(--h1-size) * 0.7);
+    color: var(--accent-light-green); /* Ejemplo pedagógico de cambio */
+  }
+}
+
+/* --- Keyframes --- */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
