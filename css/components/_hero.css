@@ -41,29 +41,43 @@
 .hero-visual {
   display: flex;
   justify-content: center;
+  perspective: 800px; /* profundidad 3D para el giro */
+
+  .cube-showcase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* separa ambos círculos */
+    padding: 1rem;
+  }
 
   .shape {
-    position: relative;
+    transform-style: preserve-3d; /* mantiene efecto 3D interno */
+    transform-origin: center center;
+    position: relative; /* permite animar propiedades de posicionamiento */
     width: 200px;
     height: 200px;
     background-color: var(--accent-light-blue);
-    border-radius: var(--radius);
+    border-radius: 50%; /* círculo perfecto */
     box-shadow: var(--shadow-default);
+    --hero-spin-speed: 8s;
+
+    /* transición para cambios suaves en hover y salida hover */
     transition:
       transform var(--transition-fast),
       background-color var(--transition-fast),
-      top var(--transition-fast);
-    animation: float 6s ease-in-out infinite;
+      top var(--transition-fast),
+      box-shadow var(--transition-fast);
+
+    /* Quitamos animaciones CSS para que el JS controle el giro continuamente */
+    animation: none;
 
     &:hover {
-      transform: rotate(15deg) scale(1.1); /* TRANSFORMACIÓN */
-      background-color: var(--accent-light-green);
-      animation-play-state: paused; /* pausa la animación de float para un hover estable */
-      top: 0;
-    }
-
-    &:not(:hover) {
-      animation-play-state: running;
+      /* A partir de JS se controla la rotación, aquí solo el efecto visual extra */
+      background-color: var(--accent-light-green) !important;
+      box-shadow:
+        0 0 30px 6px rgba(80, 250, 123, 0.4),
+        var(--shadow-default);
     }
   }
 }
@@ -97,12 +111,11 @@
 }
 
 /* --- Keyframes --- */
-@keyframes float {
-  0%,
-  100% {
-    top: 0;
+@keyframes spin-3d {
+  from {
+    transform: rotateY(0deg) scale(1);
   }
-  50% {
-    top: -20px;
+  to {
+    transform: rotateY(360deg) scale(1);
   }
 }

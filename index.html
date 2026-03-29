@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="hero-visual">
-          <div class="cube-showcase">
+          <div class="shape-showcase">
             <div class="shape"></div>
           </div>
         </div>
@@ -132,6 +132,46 @@
           this.style.transform = `rotateY(${rotation}deg)`;
         });
       });
+
+      const shape = document.querySelector('.hero-visual .shape');
+      if (shape) {
+        // ángulo actual del giro (grados), velocidad actual y objetivo
+        let current = 0,
+          speed = 8,
+          targetSpeed = 8,
+          last = performance.now();
+
+        function tick(now) {
+          const delta = (now - last) / 1000; // segundos desde el último frame
+          last = now;
+
+          // Interpolación de velocidad para efecto momentum (suaviza los cambios)
+          // - si targetSpeed baja, speed disminuye lentamente
+          // - si targetSpeed sube, speed aumenta rápidamente
+          speed += (targetSpeed - speed) * Math.min(delta * 4, 1);
+
+          // avance de ángulo en función de tiempo y velocidad
+          current += (delta * 360) / speed; // valor continuo, evita reinicios bruscos
+
+          // mantenemos el ángulo en un rango manejable (no es estrictamente 0..360)
+          if (current > 20000) current -= 20000;
+
+          // aplicamos rotación en Y + escala ligera
+          shape.style.transform = `rotateY(${current}deg) scale(1.02)`;
+
+          requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+
+        shape.addEventListener('mouseenter', () => {
+          targetSpeed = 1.6;
+        });
+
+        shape.addEventListener('mouseleave', () => {
+          targetSpeed = 8;
+        });
+      }
     </script>
   </body>
 </html>
