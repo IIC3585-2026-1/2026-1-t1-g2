@@ -24,6 +24,10 @@
   background-color: var(--bg-primary);
 }
 
+section {
+  padding-block: var(--gap);
+}
+
 .box-flip {
   position: relative;
   width: 100%;
@@ -72,6 +76,99 @@
   height: auto;
 }
 
+/* ---------- CAROUSEL --------------- */
+
+.carousel-title {
+  font-size: var(--h1-size);
+  margin-bottom: var(--gap);
+  text-align: center; 
+  color: var(--accent-light-green); 
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  padding: var(--gap);
+}
+
+/* Track horizontal */
+.carousel-track {
+  display: flex;
+  gap: var(--gap);
+  transition: transform 0.5s ease;
+}
+
+/* Cada item ocupa ancho fijo */
+.carousel-item {
+  min-width: 300px;
+  flex: 0 0 auto;
+}
+
+.carousel-item:hover {
+  transform: scale(1.08);
+  z-index: 5;
+}
+
+
+.carousel-item .box-face {
+  padding: 0;
+  border: none;
+  overflow: hidden;
+}
+
+.carousel-item .box-back {
+  flex-direction: column;
+}
+
+.carousel-item .box-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item .box-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Botones */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent-light-blue);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.carousel-btn:hover {
+  background: var(--accent-light-green);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.top-sellers .box-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.top-sellers .box-face {
+  padding: 0;
+  overflow: hidden;
+}
 .section-divider {
   line-height: 0;
   width: 100%;

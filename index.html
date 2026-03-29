@@ -116,6 +116,122 @@
       </div>
     </section>
 
+    <section class="top-sellers">
+      <h2 class="carousel-title">Today's Top 10</h2>
+
+      <div class="carousel-container">
+        <button class="carousel-btn prev">⬅</button>
+
+        <div class="carousel-track">
+          <div class="carousel-item">
+            <div class="box-flip">
+              <div class="box-face box-front">
+                <img src="assets/gta v.jpg" alt="gta v cover" class="box-img">
+              </div>
+              <div class="box-face box-back">
+                <p>Reglas Anidadas</p>
+                <img src="assets/reglas anidadas carrusel.png" alt="reglas anidadas del carrusel" class="box-img">
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="box-flip">
+              <div class="box-face box-front">
+                <img src="assets/hollow knight.webp" alt="hollow knight cover" class="box-img">
+              </div>
+              <div class="box-face box-back">
+                <video class="box-video" autoplay muted loop>
+                  <source src="assets/hollow knight.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="box-flip">
+              <div class="box-face box-front">
+                <img src="assets/life is strange.jpg" alt="life is strange cover" class="box-img">
+              </div>
+              <div class="box-face box-back">
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="box-flip">
+              <div class="box-face box-front">
+                <img src="assets/red dead redemption II.jpg" alt="red dead redemption II cover" class="box-img">
+              </div>
+              <div class="box-face box-back">
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="box-flip">
+              <div class="box-face box-front">
+                <img src="assets/peak.jpg" alt="peak cover" class="box-img">
+              </div>
+              <div class="box-face box-back">
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="box-flip">
+              <div class="box-face box-front">
+                <img src="assets/civilization.jpg" alt="civilization cover" class="box-img">
+              </div>
+              <div class="box-face box-back">
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="box-flip">
+              <div class="box-face box-front">
+                <img src="assets/stardew valley.jpg" alt="stardew valley cover" class="box-img">
+              </div>
+              <div class="box-face box-back">
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="box-flip">
+              <div class="box-face box-front">
+                <img src="assets/isaac.webp" alt="isaac cover" class="box-img">
+              </div>
+              <div class="box-face box-back">
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="box-flip">
+              <div class="box-face box-front">
+                <img src="assets/sims 4.jpg" alt="sims 4 cover" class="box-img">
+              </div>
+              <div class="box-face box-back">
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="box-flip">
+              <div class="box-face box-front">
+                <img src="assets/terraria.jpg" alt="terraria cover" class="box-img">
+              </div>
+              <div class="box-face box-back">
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-btn next">➡</button>
+      </div>
+    </section>
+
     <script>
       const boxFlips = document.querySelectorAll('.box-flip');
 
@@ -172,6 +288,49 @@
           targetSpeed = 8;
         });
       }
+    </script>
+    <script>
+      const track = document.querySelector('.carousel-track');
+      const nextBtn = document.querySelector('.next');
+      const prevBtn = document.querySelector('.prev');
+      const items = document.querySelectorAll('.carousel-item');
+      const container = document.querySelector('.carousel-container');
+
+      let position = 0;
+      let moveAmount = 320;
+      let visibleItems;
+      let maxPosition;
+
+      function updateCarousel() {
+        const itemWidth = items[0].offsetWidth;
+        const gap = 24; 
+        moveAmount = itemWidth + gap;
+
+        visibleItems = Math.floor(container.offsetWidth / moveAmount);
+        maxPosition = -(moveAmount * (items.length - visibleItems));
+
+        if (position < maxPosition) {
+          position = maxPosition;
+          track.style.transform = `translateX(${position}px)`;
+        }
+      }
+
+      // botones
+      nextBtn.addEventListener('click', () => {
+        if (position > maxPosition) {
+          position -= moveAmount;
+          track.style.transform = `translateX(${position}px)`;
+        }
+      });
+      prevBtn.addEventListener('click', () => {
+        if (position < 0) {
+          position += moveAmount;
+          track.style.transform = `translateX(${position}px)`;
+        }
+      });
+
+      updateCarousel();
+      window.addEventListener('resize', updateCarousel);
     </script>
   </body>
 </html>
