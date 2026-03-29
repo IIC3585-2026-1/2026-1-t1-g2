@@ -1,0 +1,56 @@
+/* --- Navbar Component --- */
+/* .main-header: contenedor principal del header, pegado arriba y con fondo */
+.main-header {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--accent-lighter-blue);
+  padding: 1rem var(--box-padding);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* .navbar: fila flex con logo a la izquierda y enlaces a la derecha */
+  .navbar {
+    display: flex; /* FLEXBOX */
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+
+    /* .logo: estilo del texto del logo */
+    .logo {
+      font-size: var(--h2-size);
+      font-weight: 800;
+      color: var(--accent-light-blue);
+
+      /* span dentro del logo para color secundario del texto */
+      span {
+        color: var(--text-main);
+      }
+    }
+
+    /* .nav-links: contenedor de enlaces del menú */
+    .nav-links {
+      display: flex;
+      gap: var(--gap);
+      align-items: center;
+
+      /* hover sobre cada enlace */
+      a:hover {
+        color: var(--accent-light-blue);
+        transform: translateY(-2px); /* ligero movimiento hacia arriba */
+      }
+    }
+  }
+}
+
+.navbar {
+  .btn-glass {
+    padding: 0.5rem 1.2rem; /* Más pequeño para el menú */
+    font-size: 0.8rem;
+
+    /* Si en el Navbar NO quieres que se eleve tanto al hacer hover */
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}

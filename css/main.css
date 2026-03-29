@@ -1,10 +1,11 @@
 /* Orquestador */
 @import url('_variables.css');
 @import url('_base.css');
-
-/*
 @import url('components/_navbar.css');
 @import url('components/_hero.css');
+
+/*
+
 @import url('components/_gallery.css');
 @import url('components/_features.css');
 @import url('components/_footer.css');
@@ -14,10 +15,13 @@
 .grids {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
-  gap: var(--gap); 
+  gap: var(--gap);
+  padding-top: 4rem;
+  padding-bottom: 5rem;
   padding-left: var(--box-padding);
   padding-right: var(--box-padding);
   perspective: 1000px; /* define la distancia entre el elemento y el observador */
+  background-color: var(--bg-primary);
 }
 
 section {
@@ -43,7 +47,7 @@ section {
   padding: var(--gap);
   border-radius: var(--radius);
   font-size: var(--h2-size);
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.35); 
+  box-shadow: var(--shadow-default);
   backface-visibility: hidden; /* oculta la cara trasera del elemento */
   border-left: 3px solid var(--accent-lighter-blue);
   border-top: 3px solid var(--accent-lighter-blue);
@@ -54,11 +58,13 @@ section {
 
 /* cara trasera, visible al hacer clic */
 .box-back {
-  transform: rotateY(180deg); /* rota la cara trasera 180 grados para que quede "detrás" de la frontal */
+  transform: rotateY(
+    180deg
+  ); /* rota la cara trasera 180 grados para que quede "detrás" de la frontal */
 }
 
 /* (si no agregamos nada aca, eliminar) cara frontal, visible por defecto */
-.box-front {   
+.box-front {
 }
 
 /* Imágenes dentro de los boxes */
@@ -68,38 +74,6 @@ section {
   object-fit: contain; /* mantiene la proporción sin distorsionar */
   width: auto;
   height: auto;
-}
-
-
-/* ---------- Galería --------------- */
-
-
-.store {
-  padding: var(--box-padding);
-}
-
-.store-title {
-  font-size: var(--h1-size);
-  margin-bottom: var(--gap);
-  text-align: center;
-}
-
-/* Nuevo grid para la tienda */
-.store-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--gap);
-}
-
-/* Mejora visual de los boxes en la tienda */
-.store .box-face {
-  font-size: var(--p-size);
-  transition: transform var(--transition-smooth), background-color var(--transition-fast);
-}
-
-/* Hover adicional (para mostrar TRANSICIONES) */
-.store .box-flip:hover {
-  transform: scale(1.05);
 }
 
 /* ---------- CAROUSEL --------------- */
@@ -194,4 +168,71 @@ section {
 .top-sellers .box-face {
   padding: 0;
   overflow: hidden;
+}
+.section-divider {
+  line-height: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-primary); /* Color de fondo del Hero */
+
+  svg {
+    position: relative;
+    display: block;
+    width: calc(
+      150% + 1.3px
+    ); /* Un poco más ancho para evitar bordes blancos */
+    height: 100px;
+    transform: rotateY(180deg); /* TRANSFORMACIÓN: Espejo horizontal */
+  }
+
+  .shape-fill {
+    fill: var(
+      --bg-secondary
+    ); /* Color hacia donde va (el fondo de los Grids) */
+  }
+}
+
+/* Bloque Independiente: Reutilizable en toda la web */
+.btn-glass {
+  /* Estructura Base */
+  padding: 0.8rem 2rem;
+  border-radius: calc(var(--radius) / 2);
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* Por si es un <a> */
+
+  /* Efecto Cristal */
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  box-shadow: var(--glass-shadow);
+
+  /* TRANSICIÓN */
+  transition: var(--transition-smooth);
+
+  /* HOVER con TRANSFORMACIÓN */
+  &:hover {
+    background: var(--glass-hover-bg);
+    transform: translateY(-5px);
+    border-color: var(--accent-light-blue);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Modificador: Versión Primaria */
+  &.primary {
+    background: var(--glass-primary-hover-bg);
+    border: 1px solid var(--accent-light-blue);
+
+    &:hover {
+      background: var(--accent-light-blue);
+      color: var(--bg-primary);
+    }
+  }
 }
