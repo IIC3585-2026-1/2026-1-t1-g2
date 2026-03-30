@@ -54,6 +54,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 /* cara trasera, visible al hacer clic */
@@ -61,15 +62,26 @@ section {
   transform: rotateY(
     180deg
   ); /* rota la cara trasera 180 grados para que quede "detrás" de la frontal */
+  background-color: var(--bg-secondary);
+  border-left: 3px solid var(--accent-light-blue);
+  border-top: 3px solid var(--accent-light-blue);
 }
 
 /* Imágenes dentro de los boxes */
 .box-img {
-  max-width: 100%;
+  width: 100%;
+  height: auto;
   max-height: 100%;
   object-fit: contain; /* mantiene la proporción sin distorsionar */
-  width: auto;
-  height: auto;
+}
+
+/* Tipografía dentro de boxes */
+.box-face h3 {
+  margin-bottom: 0.5rem;
+}
+
+.box-face p {
+  font-size: 0.9rem;
 }
 
 /* ---------- CAROUSEL --------------- */
@@ -230,5 +242,39 @@ section {
       background: var(--accent-light-blue);
       color: var(--bg-primary);
     }
+  }
+}
+
+/* Media Queries - Responsive Design */
+@media (max-width: 1024px) {
+  .grids {
+    grid-template-columns: repeat(1, 1fr);
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grids {
+    grid-template-columns: repeat(1, 1fr);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .box-flip {
+    min-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grids {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .box-flip {
+    min-height: 200px;
   }
 }
