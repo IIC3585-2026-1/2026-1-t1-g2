@@ -95,6 +95,9 @@
     .hero-content p {
       margin: 0 auto var(--gap);
     }
+    .hero-actions {
+      justify-content: center;
+    }
   }
   .nav-links {
     display: none;
