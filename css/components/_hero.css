@@ -103,7 +103,7 @@
 }
 
 /* --- Container Queries (Basado en el contenedor padre) --- */
-@container hero-wrapper (max-width: 600px) {
+@container hero-wrapper (max-width: 700px) {
   .hero-content h1 {
     font-size: calc(var(--h1-size) * 0.7);
     color: var(--accent-light-green); /* Ejemplo pedagógico de cambio */

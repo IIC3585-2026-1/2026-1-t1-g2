@@ -12,7 +12,7 @@
   /* 2. Tipografía y Escala (Uso de calc) */
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
   --base-size: 0.5rem;
-  --h1-size: calc(var(--base-size) * 4);
+  --h1-size: calc(var(--base-size) * 5);
   --h2-size: calc(var(--base-size) * 2.5);
   --p-size: var(--base-size);
 

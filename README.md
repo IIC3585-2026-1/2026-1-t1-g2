@@ -2,18 +2,18 @@
 
 ## Elementos de CSS
 
-- [ ] Media queries
+- [x] Media queries
   - Cambiar según tamaño de la vista/browser
-- [ ] Container queries
+- [x] Container queries
   - Cambiar según tamaño del contenedor
-- [ ] Flexbox
-- [ ] Grid
-- [ ] Variables
-- [ ] Funciones
-- [ ] Anidación de reglas
-- [ ] Transformaciones
-- [ ] Transiciones
-- [ ] Animaciones
+- [x] Flexbox
+- [x] Grid
+- [x] Variables
+- [x] Funciones
+- [x] Anidación de reglas
+- [x] Transformaciones
+- [x] Transiciones
+- [x] Animaciones
 
 ## Estructura
 

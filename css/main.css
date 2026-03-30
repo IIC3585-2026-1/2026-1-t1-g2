@@ -63,10 +63,6 @@ section {
   ); /* rota la cara trasera 180 grados para que quede "detrás" de la frontal */
 }
 
-/* (si no agregamos nada aca, eliminar) cara frontal, visible por defecto */
-.box-front {
-}
-
 /* Imágenes dentro de los boxes */
 .box-img {
   max-width: 100%;
@@ -81,8 +77,8 @@ section {
 .carousel-title {
   font-size: var(--h1-size);
   margin-bottom: var(--gap);
-  text-align: center; 
-  color: var(--accent-light-green); 
+  text-align: center;
+  color: var(--accent-light-green);
 }
 
 .carousel-container {
@@ -108,7 +104,6 @@ section {
   transform: scale(1.08);
   z-index: 5;
 }
-
 
 .carousel-item .box-face {
   padding: 0;
@@ -169,6 +164,7 @@ section {
   padding: 0;
   overflow: hidden;
 }
+
 .section-divider {
   line-height: 0;
   width: 100%;
