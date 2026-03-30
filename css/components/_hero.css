@@ -43,11 +43,10 @@
   justify-content: center;
   perspective: 800px; /* profundidad 3D para el giro */
 
-  .cube-showcase {
+  .shape-showcase {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem; /* separa ambos círculos */
     padding: 1rem;
   }
 
